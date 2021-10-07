@@ -28,10 +28,26 @@ const songs = [
         artist:'Jacinto Design'
     },
     {
+        name:'jacinto-4',
+        displayName:'Lut',
+        artist:'Jubin Nautiyal'
+    },
+    {
+        name:'jacinto-5',
+        displayName:'Lut Gaye-(Raag.Fm)',
+        artist:'Jubin Nautiyal'
+    },
+    {
         name:'metric-1',
         displayName:'Electric Chill machine',
         artist:'Jacinto Design'
+    },
+    {
+        name:'Tujhe Kitna Chahein Aur - Kabir Singh (2019)',
+        displayName:'Tujhe Kitna Chahein Aur',
+        artist:'Jubin Nautiyal'
     }
+   
     
 ]
 //check if music is play or not
@@ -108,10 +124,26 @@ function updateProgressBar(e){
          currentTimeEL.textContent =  `${currentMintues}:${durationSeconds}`;
     }
 }
+function setProgressBar(e){
+    // playsongs();
+    // console.log(e);
+    const width = this.clientWidth;
+    // console.log('width', width);
+    const clickX = e.offsetX;
+    // console.log('click', clickX);
+    const {duration} = music;
+    // console.log(clickX / width);
+    // console.log((clickX / width) * duration);
+    music.currentTime = (clickX / width) * duration;
+
+}
 //Event Listners
 prevbtn.addEventListener('click', preSongs);
 playnext.addEventListener('click', nextSongs);
 music.addEventListener('timeupdate', updateProgressBar);
+music.addEventListener('ended', nextSongs);
+progressContainer.addEventListener('click', setProgressBar);
+
 
 
 //function increament
